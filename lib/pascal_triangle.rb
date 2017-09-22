@@ -1,0 +1,3 @@
+class PascalTriangle
+
+end
