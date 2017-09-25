@@ -21,8 +21,7 @@ class PascalTriangle
   end
 
   def calculate_triangle
-    triangle_numbers =[]
-    temp_array = []
+    triangle_numbers, temp_array = [], []
     if valid_number?
       if @rows == ONE_ROW
         triangle_numbers = INITIAL_NUM
