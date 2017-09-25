@@ -38,8 +38,7 @@ class PascalTriangle
               temp = value
               temp_array << INITIAL_NUM #Add initial number to first place in temporary array
             else
-              result = temp + value
-              temp = value
+              result, temp = temp + value, value
               temp_array << result
             end
           end
