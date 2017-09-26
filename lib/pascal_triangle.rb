@@ -1,18 +1,10 @@
 class PascalTriangle
   INITIAL_NUM = 1
-  ONE_ROW = 1
-  TWO_ROWS = 2
-  EMPTY = 0
   MAX_ROWS = 100
 
   def initialize(rows)
-    rows = rows.to_i
-    if rows.between? ONE_ROW, MAX_ROWS
-      @rows = rows
-      @valid_number = true
-    else
-      @valid_number = false
-    end
+    @rows = rows.to_i
+    @valid_number = (@rows.between? 1, MAX_ROWS) ? true : false
   end
 
   def valid_number?
@@ -20,36 +12,37 @@ class PascalTriangle
   end
 
   def calculate_triangle
-    triangle_numbers, temp_array = [], []
     if valid_number?
-      if @rows == ONE_ROW
-        triangle_numbers = [[INITIAL_NUM]]
-      else
-        triangle_numbers = [INITIAL_NUM],[INITIAL_NUM,INITIAL_NUM]
-        @rows -= TWO_ROWS
+      triangle_numbers = [[INITIAL_NUM]]
+      
+      if @rows >= 2
+        triangle_numbers << [INITIAL_NUM,INITIAL_NUM]
+        @rows -= 2
 
         @rows.times do
-          temp = EMPTY
-
-          triangle_numbers.last.each do |value|
-            if temp == EMPTY
-              temp = value
-              temp_array << INITIAL_NUM #Add initial number to first place in temporary array
-            else
-              result, temp = temp + value, value
-              temp_array << result
-            end
-          end
-
-          temp_array << INITIAL_NUM #Add initial number to last place in temporary array
-          triangle_numbers << temp_array #Add calculated numbers
-          temp_array = [] #Reset temporary array
+          triangle_numbers << calculate_current_row(triangle_numbers.last)  
         end
       end
+
       triangle_numbers
     else
       false
     end
   end
 
+  private
+    def calculate_current_row(triangle_numbers)
+      index = 0
+      current_row = []
+      current_row << INITIAL_NUM
+
+      while index < triangle_numbers.count - INITIAL_NUM
+        current_row << triangle_numbers[index] + triangle_numbers[index.succ]
+        index += 1
+      end
+
+      current_row << INITIAL_NUM
+      current_row
+    end
 end
+

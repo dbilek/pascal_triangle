@@ -1,5 +1,5 @@
 require_relative 'lib/pascal_triangle'
-require_relative 'modules/main_helpers'
+require_relative 'helpers/main_helpers'
 include MainHelpers
 
 puts 
@@ -9,7 +9,7 @@ puts "Type how much rows you want to calculate in Pascal's triangle:"
   if pt.valid_number?
     puts "The result of Pascal's triangle with #{rows} " + pluralize(rows, 'row') + " is: "
       pt.calculate_triangle.each do |value|
-        puts value.join
+        puts value.join(" ")
       end
   else
     puts
