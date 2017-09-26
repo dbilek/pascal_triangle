@@ -3,12 +3,11 @@ class PascalTriangle
   ONE_ROW = 1
   TWO_ROWS = 2
   EMPTY = 0
-  NO_ROWS = 0
   MAX_ROWS = 100
 
   def initialize(rows)
     rows = rows.to_i
-    if rows > NO_ROWS && rows < MAX_ROWS
+    if rows.between? ONE_ROW, MAX_ROWS
       @rows = rows
       @valid_number = true
     else
