@@ -26,7 +26,7 @@ describe PascalTriangle do
 
     context "given 1" do
       it "returns 1" do
-        expect(pascal_triangle_1.calculate_triangle).to eql(1)
+        expect(pascal_triangle_1.calculate_triangle).to eql([[1]])
       end
     end
 

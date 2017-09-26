@@ -24,7 +24,7 @@ class PascalTriangle
     triangle_numbers, temp_array = [], []
     if valid_number?
       if @rows == ONE_ROW
-        triangle_numbers = INITIAL_NUM
+        triangle_numbers = [[INITIAL_NUM]]
       else
         triangle_numbers = [INITIAL_NUM],[INITIAL_NUM,INITIAL_NUM]
         @rows -= TWO_ROWS
