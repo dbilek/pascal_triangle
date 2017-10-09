@@ -1,6 +1,6 @@
 class PascalTriangle
   INITIAL_NUM = 1
-  MAX_ROWS = 100
+  MAX_ROWS = 500
 
   def initialize(rows)
     @rows = rows.to_i
